@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import { gaurdMiddleware } from "./middleware/gaurd.middleware.js";
 import { userRouter } from "./routes/user.route.js";
 dotenv.config();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
