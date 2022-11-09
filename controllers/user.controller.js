@@ -23,9 +23,9 @@ export const getUser = async (req, res) => {
 
 export const registerUser = async (req, res) => {
   const user = req.body;
-
+  console.log("inside register", user);
   // checking user already present or not
-  const checkEmail = await UserModel.findOne({ email: user.email });
+  const checkEmail = await UserModel.findOne({ email: user?.email });
   if (checkEmail) {
     return res.status(403).json({
       success: false,
@@ -45,7 +45,7 @@ export const registerUser = async (req, res) => {
   try {
     await newUser.save();
   } catch (err) {
-    return res.status(500).json({ success: false, error: err.message });
+    return res.status(403).json({ success: false, error: err.message });
   }
 
   // creating token
