@@ -1,4 +1,4 @@
-import { UserModel } from "../models/userSchema/user.model.js";
+import { UserModel } from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import jsonwebtoken from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -23,7 +23,6 @@ export const getUser = async (req, res) => {
 
 export const registerUser = async (req, res) => {
   const user = req.body;
-  console.log("inside register", user);
   // checking user already present or not
   const checkEmail = await UserModel.findOne({ email: user?.email });
   if (checkEmail) {
