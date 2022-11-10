@@ -4,6 +4,8 @@ import { connection } from "./config/db.js";
 import dotenv from "dotenv";
 import { gaurdMiddleware } from "./middleware/gaurd.middleware.js";
 import { userRouter } from "./routes/user.route.js";
+import { recipeRouter } from "./routes/recipe.route.js";
+import { mealRouter } from "./routes/meal.route.js";
 dotenv.config();
 const PORT = process.env.PORT || 8000;
 
@@ -15,6 +17,8 @@ app.use("/user", userRouter);
 
 // gaurd middleware for checking is user validated or not
 app.use("/", gaurdMiddleware);
+app.use("/recipes", gaurdMiddleware, recipeRouter);
+app.use("/meals", gaurdMiddleware, mealRouter);
 
 // server is runnig
 app.listen(PORT, async () => {
