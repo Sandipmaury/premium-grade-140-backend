@@ -19,7 +19,6 @@ export const getMeals = async (req, res) => {
 
 export const getSingleMeals = async (req, res) => {
   const { id } = req.params;
-  console.log("inside getSingleMeals", id);
   try {
     const data = await MealModel.find({ _id: id });
     res.status(200).json({ success: true, data: data });
