@@ -6,9 +6,9 @@ const recipeSchema = new mongoose.Schema({
   title: { type: String, required: true },
   author: { type: String, required: true },
   time: { type: String, required: true },
-  Like: { type: String, default: 0 },
+  Like: { type: Number, default: 0 },
   catagory: { type: String, required: true },
-  Comment: { type: String, default: 0 },
+  Comment: { type: Number, default: 0 },
 });
 
 export const RecipeModel = mongoose.model("recipes", recipeSchema);

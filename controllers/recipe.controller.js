@@ -3,7 +3,9 @@ import { RecipeModel } from "../models/recipes.model.js";
 export const getRecipes = async (req, res) => {
   const query = req.query;
   try {
-    const recipes = await RecipeModel.find()
+    const category = query?.category ? { catagory: query.category } : {};
+    const title = query?.q ? { title: query.q } : {};
+    const recipes = await RecipeModel.find({ ...category, ...title })
       .limit(query?.limit ? query.limit : 10)
       .skip(
         query?.limit ? query.limit * (query?.page - 1) : (query?.page - 1) * 10
