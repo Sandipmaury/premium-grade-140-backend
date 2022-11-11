@@ -13,9 +13,9 @@ const mealSchema = new mongoose.Schema({
   restaurant: { type: String, required: true },
   price: { type: String, required: true },
   restautantId: { type: String, required: true },
-  egg: { type: String, required: true },
-  milk: { type: String, required: true },
-  drink: { type: String, required: true },
+  egg: { type: Boolean, required: true },
+  milk: { type: Boolean, required: true },
+  drink: { type: Boolean, required: true },
 });
 
 export const MealModel = mongoose.model("meals", mealSchema);
