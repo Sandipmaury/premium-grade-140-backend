@@ -15,3 +15,13 @@ export const getRecipes = async (req, res) => {
     res.status(404).json({ success: false, error: err.message });
   }
 };
+
+export const getSingleRecipe = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = await RecipeModel.find({ _id: id });
+    res.status(200).json({ success: true, data: data });
+  } catch (err) {
+    res.status(404).json({ success: false, error: err.message });
+  }
+};
