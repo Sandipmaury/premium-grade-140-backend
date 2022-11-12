@@ -6,6 +6,7 @@ import { gaurdMiddleware } from "./middleware/gaurd.middleware.js";
 import { userRouter } from "./routes/user.route.js";
 import { recipeRouter } from "./routes/recipe.route.js";
 import { mealRouter } from "./routes/meal.route.js";
+import { momentRouter } from "./routes/moment.route.js";
 dotenv.config();
 const PORT = process.env.PORT || 8000;
 
@@ -19,6 +20,7 @@ app.use("/user", userRouter);
 app.use("/", gaurdMiddleware);
 app.use("/recipes", gaurdMiddleware, recipeRouter);
 app.use("/meals", gaurdMiddleware, mealRouter);
+app.use("/moments", gaurdMiddleware, momentRouter);
 
 // server is runnig
 app.listen(PORT, async () => {

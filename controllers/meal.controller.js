@@ -11,7 +11,9 @@ export const getMeals = async (req, res) => {
       ...address,
       ...title,
     });
-    const numberOfPages = Math.floor(length / Number(query?.limit));
+    const numberOfPages = Math.floor(
+      length / Number(query?.limit ? query.limit : 10)
+    );
     const data = await MealModel.find({ ...category, ...address, ...title })
       .limit(query?.limit ? query.limit : 10)
       .skip(
